@@ -25,6 +25,7 @@ def predict_student(student_data: dict) -> float:
     input_encoded = input_encoded.reindex(columns=feature_names, fill_value=0)
 
     input_scaled = scaler.transform(input_encoded)
+    input_scaled = pd.DataFrame(input_scaled, columns=feature_names)
     prediction = model.predict(input_scaled)[0]
     return round(prediction, 2)
 
